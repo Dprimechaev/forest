@@ -19,7 +19,8 @@ Route::get('/', function () {
     return view('main');
 });
 
-Auth::routes();
 
+Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');
+
 Route::get('/card', [CardController::class, 'index'])->name('card.index');

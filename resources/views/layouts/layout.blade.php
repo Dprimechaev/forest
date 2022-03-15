@@ -35,7 +35,7 @@
             </li>
         </ul>
     </nav>
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #277648;">
         <div class="sidebar">
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
@@ -49,26 +49,32 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
                         <a href="{{route('home.index')}}" class="nav-link">
-                            <i class="fas fa-solid fa-align-justify nav-icon"></i>
+                            <i class="fas fa-solid fa-house-user nav-icon"></i>
                             <p>Главная</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{route('card.index')}}" class="nav-link">
-                            <i class="fas fa-solid fa-align-justify nav-icon"></i>
+                            <i class="fas fa-solid fa-tree nav-icon"></i>
                             <p>Карточки</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="" class="nav-link">
-                            <i class="fas fa-solid fa-file-export nav-icon"></i>
+                            <i class="fas fa-solid fa-file-pdf nav-icon"></i>
                             <p>Экспорт PDF</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="" class="nav-link">
-                            <i class="fas fa-solid fa-file-export nav-icon"></i>
+                            <i class="fas fa-solid fa-file-excel nav-icon"></i>
                             <p>Экспорт Excel</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                            <i class="fas fa-solid fa-book nav-icon"></i>
+                            <p>База знаний</p>
                         </a>
                     </li>
                 </ul>
@@ -91,6 +97,8 @@
     </div>
 </div>
 
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
@@ -100,4 +108,13 @@
 </script>
 <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
 <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
-<script src="{{ asset('plugins/overlayScrollbars/js/jquery.over
+<script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+<script src="{{ asset('dist/js/adminlte.js') }}"></script>
+<script src="{{asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
+<script>
+    $(function () {
+        bsCustomFileInput.init();
+    });
+</script>
+</body>
+</html>
