@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BoxController;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -23,4 +24,6 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');
 
-Route::get('/card', [CardController::class, 'index'])->name('card.index');
+Route::resource('card', CardController::class);
+//Route::resource('box', BoxController::class);
+//Route::get('/card', [CardController::class, 'index'])->name('card.index');

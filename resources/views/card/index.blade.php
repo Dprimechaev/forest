@@ -8,10 +8,21 @@
     </button>
     <div class="container">
 
+        @foreach($cards as $card)
+            {{ $card->id }}12
+            {{ $cards->first->republic }}13
+        @endforeach
 
         <!-- Модальное окно -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl">
+                @if($errors->any())
+                    <h4>{{$errors}}</h4>
+                @endif
+                <form action="{{ route('card.store') }}" method="post">
+                    @csrf
+                    <input type="text" value="1" name="box_id" hidden>
+                    <input type="text" value="1" name="card_id" hidden>
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Карточка Таксации</h5>
@@ -32,7 +43,7 @@
                             <tbody>
                             <tr>
                                 <th>
-                                    <select class="form-select" aria-label="Пример выбора по умолчанию">
+                                    <select class="form-select" name="republic" aria-label="Пример выбора по умолчанию">
                                         <option selected>0-нет</option>
                                         <option value="1">Один</option>
                                         <option value="2">Два</option>
@@ -40,7 +51,7 @@
                                     </select>
                                 </th>
                                 <th>
-                                    <select class="form-select" aria-label="Пример выбора по умолчанию">
+                                    <select class="form-select" name="district" aria-label="Пример выбора по умолчанию">
                                         <option selected>0-нет</option>
                                         <option value="1">Один</option>
                                         <option value="2">Два</option>
@@ -48,7 +59,7 @@
                                     </select>
                                 </th>
                                 <th>
-                                    <select class="form-select" aria-label="Пример выбора по умолчанию">
+                                    <select class="form-select" name="region" aria-label="Пример выбора по умолчанию">
                                         <option selected>0-нет</option>
                                         <option value="1">Один</option>
                                         <option value="2">Два</option>
@@ -56,13 +67,13 @@
                                     </select>
                                 </th>
                                 <th>
-                                    <input type="text" style="width:60px; height: 24px" value="0">
+                                    <input type="text" name="quarter" style="width:60px; height: 24px" value="0">
                                 </th>
                                 <th>
-                                    <input type="text" style="width:60px; height: 24px" value="0">
+                                    <input type="text" name="distance" style="width:60px; height: 24px" value="0">
                                 </th>
                                 <th>
-                                    <select class="form-select" aria-label="Пример выбора по умолчанию">
+                                    <select class="form-select" name="renter" aria-label="Пример выбора по умолчанию">
                                         <option selected>0-нет</option>
                                         <option value="1">Один</option>
                                         <option value="2">Два</option>
@@ -90,13 +101,13 @@
                             <tbody>
                             <tr>
                                 <th>
-                                    <input type="text" style="width:60px; height: 24px" value="0">
+                                    <input type="text" name="number" style="width:60px; height: 24px" value="0">
                                 </th>
                                 <th>
-                                    <input type="text" style="width:60px; height: 24px" value="0">
+                                    <input type="text" name="area" style="width:60px; height: 24px" value="0">
                                 </th>
                                 <th>
-                                    <select class="form-select" aria-label="Пример выбора по умолчанию">
+                                    <select class="form-select" name="earthCategory" aria-label="Пример выбора по умолчанию">
                                         <option selected>0-нет</option>
                                         <option value="1">Один</option>
                                         <option value="2">Два</option>
@@ -104,7 +115,7 @@
                                     </select>
                                 </th>
                                 <th>
-                                    <select class="form-select" aria-label="Пример выбора по умолчанию">
+                                    <select class="form-select" name="protectionCategory" aria-label="Пример выбора по умолчанию">
                                         <option selected>0-нет</option>
                                         <option value="1">Один</option>
                                         <option value="2">Два</option>
@@ -112,7 +123,7 @@
                                     </select>
                                 </th>
                                 <th>
-                                    <select class="form-select" aria-label="Пример выбора по умолчанию">
+                                    <select class="form-select" name="cutWay" aria-label="Пример выбора по умолчанию">
                                         <option selected>0-нет</option>
                                         <option value="1">Один</option>
                                         <option value="2">Два</option>
@@ -120,7 +131,7 @@
                                     </select>
                                 </th>
                                 <th>
-                                    <select class="form-select" aria-label="Пример выбора по умолчанию">
+                                    <select class="form-select" name="ozu" aria-label="Пример выбора по умолчанию">
                                         <option selected>0-нет</option>
                                         <option value="1">Один</option>
                                         <option value="2">Два</option>
@@ -128,10 +139,10 @@
                                     </select>
                                 </th>
                                 <th>
-                                    <input type="text" style="width:60px; height: 24px" value="0">
+                                    <input type="text" name="height" style="width:60px; height: 24px" value="0">
                                 </th>
                                 <th>
-                                    <select class="form-select" aria-label="Пример выбора по умолчанию">
+                                    <select class="form-select" name="exposition" aria-label="Пример выбора по умолчанию">
                                         <option selected>0-нет</option>
                                         <option value="1">Один</option>
                                         <option value="2">Два</option>
@@ -139,16 +150,16 @@
                                     </select>
                                 </th>
                                 <th>
-                                    <input type="text" style="width:60px; height: 24px" value="0">
+                                    <input type="text" name="slope" style="width:60px; height: 24px" value="0">
                                 </th>
                                 <th class="row">
-                                    <select class="form-select" aria-label="Пример выбора по умолчанию">
+                                    <select class="form-select" name="erozionForm" aria-label="Пример выбора по умолчанию">
                                         <option selected>0-нет</option>
                                         <option value="1">Один</option>
                                         <option value="2">Два</option>
                                         <option value="3">Три</option>
                                     </select>
-                                    <select class="form-select" aria-label="Пример выбора по умолчанию">
+                                    <select class="form-select" name="erozionDegree" aria-label="Пример выбора по умолчанию">
                                         <option selected>0-нет</option>
                                         <option value="1">Один</option>
                                         <option value="2">Два</option>
@@ -176,7 +187,7 @@
                             <tr>
                                 <td></td>
                                 <td>
-                                    <select class="form-select" aria-label="Пример выбора по умолчанию">
+                                    <select class="form-select" name="firstEvent" aria-label="Пример выбора по умолчанию">
                                         <option selected>0-нет</option>
                                         <option value="1">Один</option>
                                         <option value="2">Два</option>
@@ -184,13 +195,13 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <input type="text" style="width:60px; height: 24px" value="0">
+                                    <input type="text" name="percent" style="width:60px; height: 24px" value="0">
                                 </td>
                                 <td>
-                                    <input type="text" style="width:60px; height: 24px" value="0">
+                                    <input type="text" name="firstPtk" style="width:60px; height: 24px" value="0">
                                 </td>
                                 <td>
-                                    <select class="form-select" aria-label="Пример выбора по умолчанию">
+                                    <select class="form-select" name="secondEvent" aria-label="Пример выбора по умолчанию">
                                         <option selected>0-нет</option>
                                         <option value="1">Один</option>
                                         <option value="2">Два</option>
@@ -198,10 +209,10 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <input type="text" style="width:60px; height: 24px" value="0">
+                                    <input type="text" name="secondPtk" style="width:60px; height: 24px" value="0">
                                 </td>
                                 <td>
-                                    <select class="form-select" aria-label="Пример выбора по умолчанию">
+                                    <select class="form-select" name="thirdEvent" aria-label="Пример выбора по умолчанию">
                                         <option selected>0-нет</option>
                                         <option value="1">Один</option>
                                         <option value="2">Два</option>
@@ -209,10 +220,10 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <input type="text" style="width:60px; height: 24px" value="0">
+                                    <input type="text" name="thirdPtk" style="width:60px; height: 24px" value="0">
                                 </td>
                                 <td>
-                                    <select class="form-select" aria-label="Пример выбора по умолчанию">
+                                    <select class="form-select" name="target" aria-label="Пример выбора по умолчанию">
                                         <option selected>0-нет</option>
                                         <option value="1">Один</option>
                                         <option value="2">Два</option>
@@ -301,9 +312,10 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                        <button type="button" class="btn btn-primary" style="background-color: #277648">Сохранить изменения</button>
+                        <button type="submit" class="btn btn-primary" style="background-color: #277648">Сохранить изменения</button>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>

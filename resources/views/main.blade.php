@@ -39,7 +39,7 @@
                             @auth
                                 <div class="col">
                                     <li class="nav-item">
-                                        <a href="{{ url('/home') }}" class="nav-link font-weight-bold">Главная</a>
+                                        <a href="{{ route('home.index') }}" class="nav-link font-weight-bold">Главная</a>
                                     </li>
                                 </div>
                             @else
