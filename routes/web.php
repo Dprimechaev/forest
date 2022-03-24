@@ -25,5 +25,4 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');
 
 Route::resource('card', CardController::class);
-//Route::resource('box', BoxController::class);
-//Route::get('/card', [CardController::class, 'index'])->name('card.index');
+Route::resource('box', BoxController::class);

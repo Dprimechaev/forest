@@ -9,8 +9,8 @@
     <div class="container">
 
         @foreach($cards as $card)
-            {{ $card->id }}12
-            {{ $cards->first->republic }}13
+            {{ $card->id }}
+            {{ $cards->first->republic }}
         @endforeach
 
         <!-- Модальное окно -->
@@ -21,7 +21,7 @@
                 @endif
                 <form action="{{ route('card.store') }}" method="post">
                     @csrf
-                    <input type="text" value="1" name="box_id" hidden>
+                    <input type="text" value="" name="box_id" hidden>
                     <input type="text" value="1" name="card_id" hidden>
                 <div class="modal-content">
                     <div class="modal-header">

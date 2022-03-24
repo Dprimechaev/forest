@@ -53,12 +53,12 @@
                             <p>Главная</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+{{--                    <li class="nav-item">
                         <a href="{{route('card.index')}}" class="nav-link">
                             <i class="fas fa-solid fa-tree nav-icon"></i>
                             <p>Карточки</p>
                         </a>
-                    </li>
+                    </li>--}}
                     <li class="nav-item">
                         <a href="" class="nav-link">
                             <i class="fas fa-solid fa-file-pdf nav-icon"></i>

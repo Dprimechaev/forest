@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Box;
 use App\Models\Card;
-use App\Models\First;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use PHPUnit\Exception;
 
-class CardController extends Controller
+class BoxController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         //
     }
@@ -37,36 +37,37 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            $validated = $request->all();
-            $card = Card::create(['box_id' => $validated['box_id']]);
-            unset($validated['box_id']);
-            $first = $card->first()->create($validated);
-        } catch (Exception $e){
-            return redirect()->back()->withErrors($e->getMessage());
+        $rules = ['title' => 'required'];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return redirect()->route('home.index')->withErrors($validator);
+        } else {
+            $input = $request->all();
+            unset($input['_token']);
+            $input['user_id'] = \Auth::id();
+            $box = Box::create($input);
+            return redirect()->back()->with('succes', 'БД успешно создана');
         }
-        return redirect()->back();
-
     }
-
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Card  $card
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Card $card)
+    public function show(Box $box, Request $request)
     {
-        //
+        $cards = Card::where('box_id', $box->id)->with('first')->get();
+        return view('box.show', compact(['cards', 'box']));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Card  $card
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Card $card)
+    public function edit($id)
     {
         //
     }
@@ -75,10 +76,10 @@ class CardController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Card  $card
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Card $card)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -86,10 +87,10 @@ class CardController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Card  $card
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Card $card)
+    public function destroy($id)
     {
         //
     }
