@@ -10,11 +10,11 @@
     @foreach($cards as $card)
         <table>
             <thead>
-                <th>id</th>
+                <th>Номер</th>
                 <th>Республика</th>
             </thead>
             <tbody>
-                <td>{{ $card->id }}</td>
+                <td>{{ $loop->iteration }}</td>
                 <td>{{ $card->first->republic }}</td>
             </tbody>
         </table>
